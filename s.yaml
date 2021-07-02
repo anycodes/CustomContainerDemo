@@ -1,6 +1,6 @@
 edition: 1.0.0
 name: fcDeployApp
-access: default
+access: publish_access
 
 services:
   HelloWorld:

@@ -2,7 +2,7 @@ name: Publish
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   deploy:
@@ -14,9 +14,6 @@ jobs:
           node-version: 12
           registry-url: https://registry.npmjs.org/
       - run: npm install -g @serverless-devs/s
-      - run: s config add --AccountID ${{secrets.ALIYUN_ACCOUNT_ID}} --AccessKeyID ${{secrets.ALIYUN_ACCESS_KEY_ID}} --AccessKeySecret ${{secrets.ALIYUN_ACCESS_KEY_SECRET}} -a website_access
-      - run: version=${cat tag}
-      - run: registry='registry.cn-shanghai.aliyuncs.com/custom-container/test:'
-      - run: export IMAGE=$registry$version
-      - run: s build --use-docker
-      - run: s deploy --push-registry acr-internet --use-local -y
+      - run: s config add --AccountID ${{secrets.AccountID}} --AccessKeyID ${{secrets.AccessKeyID}} --AccessKeySecret ${{secrets.AccessKeySecret}} -a publish_access
+      - run: chmod +x run_experiments.sh
+      - run: ./setup.sh
