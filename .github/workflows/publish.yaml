@@ -15,5 +15,5 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - run: npm install -g @serverless-devs/s
       - run: s config add --AccountID ${{secrets.AccountID}} --AccessKeyID ${{secrets.AccessKeyID}} --AccessKeySecret ${{secrets.AccessKeySecret}} -a publish_access
-      - run: chmod +x run_experiments.sh
+      - run: chmod +x ./setup.sh
       - run: ./setup.sh
